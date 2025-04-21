@@ -4,7 +4,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/helpes_function/get_order_dummy.dart';
 import '../../../../../core/widget/customErrorWidght.dart';
-import '../maneger/cubit/order_cubit.dart';
+import '../maneger/cubit/order/order_cubit.dart';
 import 'getOrdersBody.dart';
 
 class OrdersViewBodyBuilder extends StatefulWidget {
@@ -29,7 +29,7 @@ class _OrdersViewBodyBuilderState extends State<OrdersViewBodyBuilder> {
           orders: state.orders,
         );
       } else if (state is OrderFailure) {
-        return const Customerrorwidght(text: 'حدث خطأ');
+        return const CustomSnakebarwidght(text: 'حدث خطأ');
       } else {
         return Skeletonizer(
             enabled: true,

@@ -1,5 +1,6 @@
 //دا كلاس خاص بالفير بيز وبيرث من DatabaseServeces
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:makani_dashbord/core/enums/order_enum.dart';
 
 import 'DataBase_Serveces.dart';
 
@@ -70,15 +71,18 @@ class FirestoerServeces implements DataBaseServeces {
       // await data.snapshots().first.then((event) => event.docs.map((e) => e.data()).toList());
     }
   }
+  
+  @override
+   Future<void> updateData(
+      {required String path,
+      required Map<String, dynamic> data,
+      String? documentId}) async {
+
+       await firestore.collection(path).doc(documentId).update(data);
+    
+  }
+
+  
+  
 }
 
-// Future<void> addData(
-//     {required String path,
-//       required Map<String, dynamic> data,
-//       String? documentId}) async {
-//   if (documentId != null) {
-//     await firestore.collection(path).doc(documentId).set(data);
-//   } else {
-//     await firestore.collection(path).add(data);
-//   }
-// }

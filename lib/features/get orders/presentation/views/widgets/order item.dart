@@ -1,10 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:makani_dashbord/core/enums/order_enum.dart';
+import 'package:makani_dashbord/core/services/CustomBlocObserver.dart';
+import 'package:makani_dashbord/features/get%20orders/data/models/order%20model.dart';
+import 'package:makani_dashbord/features/get%20orders/presentation/views/maneger/cubit/order/order_cubit.dart';
+import 'package:makani_dashbord/features/get%20orders/presentation/views/maneger/cubit/update_order/update_order_cubit.dart';
 import 'package:makani_dashbord/features/get%20orders/presentation/views/widgets/returnIconState.dart';
 import 'package:makani_dashbord/features/get%20orders/presentation/views/widgets/returnStateColors.dart';
 import 'package:makani_dashbord/features/get%20orders/presentation/views/widgets/returnStateText.dart';
 import '../../../domins/entitys/order entity.dart';
 import '../../../domins/entitys/orderProductEntity.dart';
+import 'change_status_botton.dart';
 
 class OrderItem extends StatelessWidget {
   final OrderEntity orderEntity;
@@ -84,6 +91,8 @@ class OrderItem extends StatelessWidget {
                 return _buildProductItem(orderEntity.orderProductEntity[index]);
               },
             ),
+            const SizedBox(height: 10),
+            ChangeStatusBotton(orderEntity: orderEntity,)
           ],
         ),
       ),

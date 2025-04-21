@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:makani_dashbord/core/enums/order_enum.dart';
+import 'package:makani_dashbord/features/get%20orders/data/models/order%20model.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../../core/repos/order_reop/order_repo.dart';
-import '../../../../domins/entitys/order entity.dart';
+import '../../../../../../../core/repos/order_reop/order_repo.dart';
+import '../../../../../domins/entitys/order entity.dart';
 part 'order_state.dart';
 
 class OrderCubit extends Cubit<OrderState> {
@@ -25,3 +27,6 @@ class OrderCubit extends Cubit<OrderState> {
     return super.close();
   }
 }
+
+
+

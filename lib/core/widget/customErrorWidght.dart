@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Customerrorwidght extends StatelessWidget {
-  const Customerrorwidght({super.key, required this.text});
+class CustomSnakebarwidght extends StatelessWidget {
+  const CustomSnakebarwidght({super.key, required this.text});
   final String text;
   @override
   Widget build(BuildContext context) {
