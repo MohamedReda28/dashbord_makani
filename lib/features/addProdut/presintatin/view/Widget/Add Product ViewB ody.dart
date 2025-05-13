@@ -21,9 +21,9 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  late String name, description, code;
+  late String name, description, code, unitAmount,catogry;
   late num price;
-  late int expirationMonth, unitAmount, numberOfCaloric;
+  late double  numberOfCaloric;
   File? fileimage;
   bool isFeature = false;
   bool isOrganic = false;
@@ -59,10 +59,20 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 height: 16,
               ),
               CustomTextFormField(
-                hinttext: 'expirationMonth',
+                hinttext: 'unitAmount',
                 textInputType: TextInputType.number,
                 onSaved: (value) {
-                  expirationMonth = int.parse(value!);
+                  unitAmount = value!;
+                },
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              CustomTextFormField(
+                hinttext: 'catogry',
+                textInputType: TextInputType.text,
+                onSaved: (value) {
+                  catogry = value!;
                 },
               ),
               const SizedBox(
@@ -72,22 +82,13 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hinttext: 'numberOfCaloric',
                 textInputType: TextInputType.number,
                 onSaved: (value) {
-                  numberOfCaloric = int.parse(value!);
+                  numberOfCaloric = double.parse(value!);
                 },
               ),
               const SizedBox(
                 height: 16,
               ),
-              CustomTextFormField(
-                hinttext: 'unitAmount',
-                textInputType: TextInputType.number,
-                onSaved: (value) {
-                  unitAmount = int.parse(value!);
-                },
-              ),
-              const SizedBox(
-                height: 16,
-              ),
+
               CustomTextFormField(
                 hinttext: 'Product code',
                 textInputType: TextInputType.number,
@@ -140,10 +141,10 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           price: price,
                           code: code,
                           description: description,
+                          catogry :catogry,
                           image: fileimage!,
                           isFeature: isFeature,
                           isOrgnic: isOrganic,
-                          expirationMonth: expirationMonth,
                           numberOfCaloric: numberOfCaloric,
                           unitAmount: unitAmount,
                           reviews: []);

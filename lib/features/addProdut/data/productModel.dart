@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import 'package:makani_dashbord/features/addProdut/data/reviewPoductModel.dart';
@@ -10,24 +8,26 @@ class ProductModel {
   final String name;
   final String description;
   final String code;
+  final String catogry;
+
   final num price;
+  final String unitAmount;
   final File image;
   final bool isFeature;
   final int sellingcount;
   String? imageUrl;
-  final int expirationMonth;
-  final int numberOfCaloric;
-  final int unitAmount;
+  //final int expirationMonth;
+  final double numberOfCaloric;
   final num avgReting = 0;
   final num ratigCount = 0;
   final bool isOrgnic;
   final List<ReviewporductModel> reviews;
 
   ProductModel(
-      {required this.expirationMonth,
-      required this.numberOfCaloric,
+      {required this.numberOfCaloric,
       required this.unitAmount,
       required this.name,
+      required this.catogry,
       required this.description,
       required this.code,
       this.sellingcount = 0,
@@ -40,41 +40,37 @@ class ProductModel {
 
   factory ProductModel.fromEntity(ProductEntity addProductInputEntity) {
     return ProductModel(
-        
-        name: addProductInputEntity.name,
-        description: addProductInputEntity.description,
-        code: addProductInputEntity.code,
-        price: addProductInputEntity.price,
-        image: addProductInputEntity.image,
-        isFeature: addProductInputEntity.isFeature,
-        isOrgnic: addProductInputEntity.isOrgnic,
-        imageUrl: addProductInputEntity.imageUrl,
-        expirationMonth: addProductInputEntity.expirationMonth,
-        numberOfCaloric: addProductInputEntity.numberOfCaloric,
-        unitAmount: addProductInputEntity.unitAmount,
-        reviews: addProductInputEntity.reviews
-            .map((e) => ReviewporductModel.fromEntity(e))
-            .toList(),
-        );
+      name: addProductInputEntity.name,
+      description: addProductInputEntity.description,
+      catogry: addProductInputEntity.catogry,
+      code: addProductInputEntity.code,
+      price: addProductInputEntity.price,
+      image: addProductInputEntity.image,
+      isFeature: addProductInputEntity.isFeature,
+      isOrgnic: addProductInputEntity.isOrgnic,
+      imageUrl: addProductInputEntity.imageUrl,
+      numberOfCaloric: addProductInputEntity.numberOfCaloric,
+      unitAmount: addProductInputEntity.unitAmount,
+      reviews: addProductInputEntity.reviews
+          .map((e) => ReviewporductModel.fromEntity(e))
+          .toList(),
+    );
   }
-  
+
   toMap() {
     return {
       'name': name,
       'description': description,
+      'catogry' : catogry,
       'code': code,
       'sellingcount': sellingcount,
       'price': price,
       'isFeature': isFeature,
       'imageUrl': imageUrl,
-      'expirationMonth': expirationMonth,
       'numberOfCaloric': numberOfCaloric,
       'unitAmount': unitAmount,
       'isOrgnic': isOrgnic,
       'reviews': reviews.map((e) => e.toMap()).toList(),
     };
   }
- 
-
-  
 }
