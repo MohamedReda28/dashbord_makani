@@ -5,7 +5,7 @@ import '../../../../../core/uitels/App_TextStyle.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.hinttext,
+    required this.labeltext,
     required this.textInputType,
     this.onSaved,
     this.obscureText = false,
@@ -13,7 +13,7 @@ class CustomTextFormField extends StatelessWidget {
     this.maxLines = 1,
   });
 
-  final String hinttext;
+  final String labeltext;
   final bool obscureText;
   final TextInputType textInputType;
   final void Function(String?)? onSaved;
@@ -40,8 +40,9 @@ class CustomTextFormField extends StatelessWidget {
         border: buildOutlineInputBorder(),
         focusedBorder: buildOutlineInputBorder(),
         enabledBorder: buildOutlineInputBorder(),
-        hintText: hinttext,
-        helperStyle: AppStyle.bold13.copyWith(color: Color(0xFF949D9E)),
+
+        label: Text(labeltext) ,
+        helperStyle: AppStyle.bold13.copyWith(color: const Color(0xFF949D9E)),
       ),
     );
   }

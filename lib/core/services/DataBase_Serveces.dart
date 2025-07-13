@@ -15,4 +15,5 @@ abstract class DataBaseServeces {
   Future<void> updateData({required String path, required Map<String, dynamic> data,String? documentId});
 
   Future<bool> chackIfDataExist({required String path, required String documentId});
+  Future<void>deletData({required String path,required String productID});
 }

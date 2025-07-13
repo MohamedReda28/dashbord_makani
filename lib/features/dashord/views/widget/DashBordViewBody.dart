@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makani_dashbord/features/addpost/presentation/views/addpostview.dart';
 
 
 import '../../../../core/widget/Custom_Botton.dart';
@@ -15,16 +16,22 @@ class Dashbordviewbody extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           CustomBotton(
-            title: 'Add Data',
+            title: 'اضافه منتج',
             ontap: () {
               Navigator.pushNamed(context, AddProductView.routName);
             },
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           CustomBotton(
-              title: 'get orders',
+              title: 'عرض الطلبات',
               ontap: () {
                 Navigator.pushNamed(context, GetOrders.routName);
+              }),
+          const SizedBox(height: 20),
+          CustomBotton(
+              title: 'اضافه بوست',
+              ontap: () {
+                Navigator.pushNamed(context, Addpostview.routName);
               })
         ],
       ),

@@ -15,12 +15,14 @@ class ProductRepoImplement implements ProductRepo {
   @override
   Future<Either<Failur, void>> addProduct(ProductEntity addProductInputEntity) async {
     try {
+      var product =  ProductModel.fromEntity(addProductInputEntity);
      await dataBaseServeces.addData(
+       documentId:product.pID,
       path: BackEndImpoint.addProduct,
-      data: ProductModel.fromEntity(addProductInputEntity).toMap());
+      data:product.toJson());
       return const Right(null);
     }  catch (e) {
-      return Left(ServerFailure('Failed to add product'));
+      return Left(ServerFailure('خطأ في اضافه المنتج'));
     }
   }
 }

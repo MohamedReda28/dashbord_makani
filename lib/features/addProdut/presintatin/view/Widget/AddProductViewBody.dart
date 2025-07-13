@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helpes_function/BuildSnakBar.dart';
 import '../../../../../core/widget/Custom_Botton.dart';
+import '../../../../../core/widget/dropdownTextFormField.dart';
 import '../../../domains/entitys/ProductEntity.dart';
 import '../maneger/cubit/add_product_cubit.dart';
 import 'CustomImageFiled.dart';
@@ -21,7 +22,7 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  late String name, description, code, unitAmount,catogry;
+  late String name, description, code,catogry;
   late num price;
   late double  numberOfCaloric;
   File? fileimage;
@@ -39,7 +40,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
           child: Column(
             children: [
               CustomTextFormField(
-                hinttext: 'Product Name',
+                labeltext: 'اسم المنتج',
                 textInputType: TextInputType.text,
                 onSaved: (value) {
                   name = value!;
@@ -49,7 +50,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 height: 16,
               ),
               CustomTextFormField(
-                hinttext: 'Product price',
+                labeltext: 'السعر',
                 textInputType: TextInputType.number,
                 onSaved: (value) {
                   price = num.parse(value!);
@@ -58,31 +59,23 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               const SizedBox(
                 height: 16,
               ),
-              CustomTextFormField(
-                hinttext: 'unitAmount',
-                textInputType: TextInputType.number,
-                onSaved: (value) {
-                  unitAmount = value!;
-                },
-              ),
+              // CustomTextFormField(
+              //   hinttext: 'الكميه',
+              //   textInputType: TextInputType.number,
+              //   onSaved: (value) {
+              //     unitAmount = value!;
+              //   },
+              // ),
               const SizedBox(
                 height: 16,
               ),
-              CustomTextFormField(
-                hinttext: 'catogry',
-                textInputType: TextInputType.text,
-                onSaved: (value) {
-                  catogry = value!;
-                },
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              CustomTextFormField(
-                hinttext: 'numberOfCaloric',
-                textInputType: TextInputType.number,
-                onSaved: (value) {
-                  numberOfCaloric = double.parse(value!);
+              DropdownTextFormField(
+                items: const ['ساندوتشات', 'مشوبات بالوزن', 'كريبات', 'مشروبات',
+                  'وجبات ارز', 'المقبلات','الصواني','برجر بيف',
+                  'برجر تشكن','ساندوتشات شاورما','وجبات شاورما','شاورما بالوزن','بيتزا',],
+                label: 'الصنف',
+                onChanged: (val) {
+                  catogry = val;
                 },
               ),
               const SizedBox(
@@ -90,7 +83,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
 
               CustomTextFormField(
-                hinttext: 'Product code',
+                labeltext: 'كود المنتج',
                 textInputType: TextInputType.number,
                 onSaved: (value) {
                   code = value!.toLowerCase();
@@ -100,7 +93,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 height: 16,
               ),
               CustomTextFormField(
-                hinttext: 'Product Description',
+                labeltext: 'وصف المنتج',
                 textInputType: TextInputType.text,
                 maxLines: 5,
                 onSaved: (value) {
@@ -131,7 +124,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 height: 16,
               ),
               CustomBotton(
-                title: 'Add Product',
+                title: 'اضافة منتج',
                 ontap: () {
                   if (fileimage != null) {
                     if (_formkey.currentState!.validate()) {
@@ -145,8 +138,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           image: fileimage!,
                           isFeature: isFeature,
                           isOrgnic: isOrganic,
-                          numberOfCaloric: numberOfCaloric,
-                          unitAmount: unitAmount,
                           reviews: []);
                       context.read<AddProductCubit>().addProduct(input);
                     } else {
@@ -155,7 +146,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       });
                     }
                   } else {
-                    BuildSnakBar(context, 'Please select an image');
+                    BuildSnakBar(context, 'حدد الصوره',type:SnackbarType.warning );
                   }
                 },
               ),

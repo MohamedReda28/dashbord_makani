@@ -52,7 +52,7 @@ class FirestoerServeces implements DataBaseServeces {
   }
 
   @override
-  Stream <dynamic>getDataStream(
+  Stream<dynamic> getDataStream(
       {required String path, Map<String, dynamic>? query}) async* {
     Query<Map<String, dynamic>> data = firestore.collection(path);
     if (query != null) {
@@ -71,18 +71,21 @@ class FirestoerServeces implements DataBaseServeces {
       // await data.snapshots().first.then((event) => event.docs.map((e) => e.data()).toList());
     }
   }
-  
+
   @override
-   Future<void> updateData(
+  Future<void> updateData(
       {required String path,
       required Map<String, dynamic> data,
       String? documentId}) async {
-
-       await firestore.collection(path).doc(documentId).update(data);
-    
+    await firestore.collection(path).doc(documentId).update(data);
   }
 
-  
-  
+  @override
+  Future<void> deletData(
+      {required String path, required String productID}) async {
+    await firestore
+        .collection(path)
+        .doc(productID)
+        .delete();
+  }
 }
-

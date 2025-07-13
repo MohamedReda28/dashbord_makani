@@ -1,31 +1,30 @@
 import 'dart:io';
-
 import 'package:makani_dashbord/features/addProdut/data/reviewPoductModel.dart';
-
+import 'package:uuid/uuid.dart';
 import '../domains/entitys/ProductEntity.dart';
 
 class ProductModel {
+  final String pID;
   final String name;
   final String description;
   final String code;
   final String catogry;
-
   final num price;
-  final String unitAmount;
   final File image;
   final bool isFeature;
   final int sellingcount;
   String? imageUrl;
   //final int expirationMonth;
-  final double numberOfCaloric;
-  final num avgReting = 0;
-  final num ratigCount = 0;
+  final double avgReting;
+  final int ratigCount;
   final bool isOrgnic;
   final List<ReviewporductModel> reviews;
 
   ProductModel(
-      {required this.numberOfCaloric,
-      required this.unitAmount,
+      {
+      required this.pID,
+      this.avgReting = 0.0,
+      this.ratigCount = 0,
       required this.name,
       required this.catogry,
       required this.description,
@@ -49,27 +48,27 @@ class ProductModel {
       isFeature: addProductInputEntity.isFeature,
       isOrgnic: addProductInputEntity.isOrgnic,
       imageUrl: addProductInputEntity.imageUrl,
-      numberOfCaloric: addProductInputEntity.numberOfCaloric,
-      unitAmount: addProductInputEntity.unitAmount,
       reviews: addProductInputEntity.reviews
           .map((e) => ReviewporductModel.fromEntity(e))
           .toList(),
+      pID: Uuid().v4(),
     );
   }
 
-  toMap() {
+  toJson() {
     return {
+      'pId': pID,
       'name': name,
       'description': description,
-      'catogry' : catogry,
+      'catogry': catogry,
       'code': code,
       'sellingcount': sellingcount,
       'price': price,
       'isFeature': isFeature,
       'imageUrl': imageUrl,
-      'numberOfCaloric': numberOfCaloric,
-      'unitAmount': unitAmount,
       'isOrgnic': isOrgnic,
+      'ratigCount': ratigCount,
+      'avgReting': avgReting,
       'reviews': reviews.map((e) => e.toMap()).toList(),
     };
   }

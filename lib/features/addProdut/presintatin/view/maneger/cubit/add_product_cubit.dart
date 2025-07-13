@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-
 import '../../../../../../core/repos/image_repo/image_repo.dart';
 import '../../../../../../core/repos/product_repo/product_repo.dart';
 import '../../../../domains/entitys/ProductEntity.dart';

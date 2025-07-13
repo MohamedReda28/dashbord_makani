@@ -75,8 +75,8 @@ class OrderItem extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(
-                '${orderEntity.addressOrderEntity.name}, ${orderEntity.addressOrderEntity.address}'),
-            Text('City: ${orderEntity.addressOrderEntity.city}'),
+                'name: ${orderEntity.addressOrderEntity.name}'),
+            Text('address: ${orderEntity.addressOrderEntity.city}, ${orderEntity.addressOrderEntity.address}'),
             Text('Phone: ${orderEntity.addressOrderEntity.phone}'),
             const Divider(),
             const Text(

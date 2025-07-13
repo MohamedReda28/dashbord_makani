@@ -5,7 +5,7 @@ import '../../../../core/helpes_function/BuildSnakBar.dart';
 import '../../../../core/repos/image_repo/image_repo.dart';
 import '../../../../core/repos/product_repo/product_repo.dart';
 import '../../../../core/services/git_it_Service.dart';
-import 'Widget/Add Product ViewB ody.dart';
+import 'Widget/AddProductViewBody.dart';
 import '../../../../core/widget/build appbar.dart';
 import 'maneger/cubit/add_product_cubit.dart';
 
@@ -15,7 +15,7 @@ class AddProductView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: 'Add Product'),
+      appBar: buildAppBar(title: 'اضافة منتج'),
       body: BlocProvider(
         create: (context) => AddProductCubit(
           getIt.get<ImageRepo>(),
@@ -26,13 +26,13 @@ class AddProductView extends StatelessWidget {
               builder: (BuildContext context, AddProductState state) {
             return ModalProgressHUD(
                 inAsyncCall: state is AddProductLoading,
-                child: AddProductViewBody());
+                child: const AddProductViewBody());
           }, listener: (BuildContext context, AddProductState state) {
             if (state is AddProductSuccess) {
-              return BuildSnakBar(context, 'Add Product Seccessfully');
+              return BuildSnakBar(context, 'تم اضافه منتج جديد',type:SnackbarType.success );
             }
             if (state is AddProductFailur) {
-              return BuildSnakBar(context, state.errorMassage);
+              return BuildSnakBar(context, state.errorMassage,type:SnackbarType.error );
             }
           });
         }),

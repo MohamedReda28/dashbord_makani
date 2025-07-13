@@ -15,20 +15,25 @@ class OrderRepoImplment implements OrderRepo{
   OrderRepoImplment(this.dataBaseServeces);
   @override
  Stream<Either<Failur, List<OrderEntity>>> getOrders() async* {
-  try {
-    await for (var (data as List<Map<String,dynamic>>) in dataBaseServeces.getDataStream(path: BackEndImpoint.getOedersData)) {
+    try {
+      await for (var event in dataBaseServeces.getDataStream(
+        path: BackEndImpoint.getOedersData,
+        query: {
+          'orderBy': 'date',
+          'descending': true,
+        },
+      )) {
+        // تأكد إن event هو List<Map<String, dynamic>>
+        List<Map<String, dynamic>> data = List<Map<String, dynamic>>.from(event);
 
-     //dataBaseServeces.getDataStream(path: BackEndImpoint.getOedersData) as List<Map<String, dynamic>>;
-    List<OrderModel> orderModel = data.map((e) => OrderModel.fromJson(e)).toList();
-    List<OrderEntity> ordersEntit = orderModel.map((e) => e.toEntity()).toList();
-    yield right(ordersEntit);
+        List<OrderModel> orderModel = data.map((e) => OrderModel.fromJson(e)).toList();
+        List<OrderEntity> ordersEntity = orderModel.map((e) => e.toEntity()).toList();
 
+        yield right(ordersEntity);
+      }
+    } catch (e) {
+      yield left(ServerFailure(e.toString()));
     }
-
-
-  } catch (e) {
-    yield left(ServerFailure(e.toString()));
-  }
 }
 
   @override

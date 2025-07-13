@@ -14,9 +14,7 @@ OrderEntity getdummydata() {
       name: 'John Doe',
       address: '123 Main Street',
       phone: '123-456-7890',
-      email: 'johndoe@example.com',
       city: 'New York',
-      addressDetels: 'Apartment 4B',
     ),
     orderProductEntity: [
       OrderproductEntity(
