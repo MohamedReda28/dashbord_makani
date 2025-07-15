@@ -12,10 +12,14 @@ class OrderModel {
   final AddressOrderModel addressOrderModel;
   final List<Orderproductmodel> orderProductModel;
   final String payMethod;
+  final String orderNumber;
   final String status;
+  final String methodOfReceipt;
 
   OrderModel(
       {required this.totalPrice,
+        required this.orderNumber,
+        required this.methodOfReceipt,
       required this.uID,
       required this.oID,
      required this.addressOrderModel,
@@ -25,6 +29,8 @@ class OrderModel {
 
   factory OrderModel.fromJson(Map<String, dynamic> json) {
     return OrderModel(
+      orderNumber: json['orderNumber'],
+      methodOfReceipt: json['methodOfReceipt'],
       oID: json['oID'],
       totalPrice: json['totalPrice'],
       uID: json['uID'],
@@ -52,6 +58,8 @@ class OrderModel {
   OrderEntity toEntity(){
     return OrderEntity(
       oID:  oID,
+      methodOfReceipt: methodOfReceipt,
+      orderNumber: orderNumber,
       totalPrice: totalPrice,
       status:  OrderStateEnum.values.firstWhere((element) => element.toString().split('.').last == status),
       uID: uID,

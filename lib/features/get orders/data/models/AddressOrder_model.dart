@@ -16,9 +16,9 @@ class AddressOrderModel {
 
   factory AddressOrderModel.fromJson(Map<String, dynamic> json) {
     return AddressOrderModel(
-      name: json['name'],
+      name: json['name']??'',
       address: json['address'],
-      phone: json['phone'],
+      phone: json['phone']??'',
       city: json['city'],
     );
   }

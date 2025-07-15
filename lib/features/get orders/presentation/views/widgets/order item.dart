@@ -16,7 +16,7 @@ import 'change_status_botton.dart';
 class OrderItem extends StatelessWidget {
   final OrderEntity orderEntity;
 
-  const OrderItem({Key? key, required this.orderEntity}) : super(key: key);
+  OrderItem({Key? key, required this.orderEntity}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,25 +63,38 @@ class OrderItem extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'User ID: ${orderEntity.uID}',
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              'رقم الطلب: ${orderEntity.orderNumber}',
+              style: style,
             ),
             const SizedBox(height: 5),
-            Text('Total Price: \$${orderEntity.totalPrice.toStringAsFixed(2)}'),
-            Text('Payment Method: ${orderEntity.payMethod}'),
+            Text(
+              'اجمالي السعر:${orderEntity.totalPrice.toStringAsFixed(1)}',
+              style: style,
+            ),
+            Text('طريقه الدفع: ${orderEntity.payMethod}', style: style),
             const Divider(),
             const Text(
-              'Shipping Address',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              'عنوان التوصيل',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             Text(
-                'name: ${orderEntity.addressOrderEntity.name}'),
-            Text('address: ${orderEntity.addressOrderEntity.city}, ${orderEntity.addressOrderEntity.address}'),
-            Text('Phone: ${orderEntity.addressOrderEntity.phone}'),
+              'الاسم: ${orderEntity.addressOrderEntity.name}',
+              style: style,
+            ),
+            Text('طريقه الاستلام: ${orderEntity.methodOfReceipt}',
+                style: style),
+
+            Text(
+                'العنوان: ${orderEntity.addressOrderEntity.city}, ${orderEntity.addressOrderEntity.address}',
+                style: style),
+            Text(
+              'رقم الموبايل: ${orderEntity.addressOrderEntity.phone}',
+              style: style,
+            ),
             const Divider(),
             const Text(
-              'Ordered Products:',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              'المنتجات المطلوبة :',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
@@ -92,7 +105,9 @@ class OrderItem extends StatelessWidget {
               },
             ),
             const SizedBox(height: 10),
-            ChangeStatusBotton(orderEntity: orderEntity,)
+            ChangeStatusBotton(
+              orderEntity: orderEntity,
+            )
           ],
         ),
       ),
@@ -109,10 +124,10 @@ class OrderItem extends StatelessWidget {
       title: Text(product.name),
       subtitle: Row(
         children: [
-          Text('Quantity: ${product.quantity}'),
+          Text('الكميه: ${product.quantity}'),
           const Spacer(),
           Text(
-            '\$${product.price}',
+            'جنيه ${product.price}',
             style: const TextStyle(
                 color: Colors.green, fontSize: 17, fontWeight: FontWeight.w600),
           ),
@@ -120,4 +135,6 @@ class OrderItem extends StatelessWidget {
       ),
     );
   }
+
+  TextStyle style = const TextStyle(fontWeight: FontWeight.bold, fontSize: 16);
 }

@@ -37,7 +37,7 @@ class Makani_Dashbord extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('ar'),
+      locale: const Locale('en'),
       debugShowCheckedModeBanner: false,
       initialRoute: DashBordView.routName,
       onGenerateRoute: onGenerateRoute,

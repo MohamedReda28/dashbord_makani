@@ -22,9 +22,9 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  late String name, description, code,catogry;
+  late String name, description, code, catogry;
   late num price;
-  late double  numberOfCaloric;
+  late double numberOfCaloric;
   File? fileimage;
   bool isFeature = false;
   bool isOrganic = false;
@@ -70,9 +70,21 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 height: 16,
               ),
               DropdownTextFormField(
-                items: const ['ساندوتشات', 'مشوبات بالوزن', 'كريبات', 'مشروبات',
-                  'وجبات ارز', 'المقبلات','الصواني','برجر بيف',
-                  'برجر تشكن','ساندوتشات شاورما','وجبات شاورما','شاورما بالوزن','بيتزا',],
+                items: const [
+                  'ساندوتشات',
+                  'مشوبات بالوزن',
+                  'كريبات',
+                  'مشروبات',
+                  'وجبات ارز',
+                  'المقبلات',
+                  'الصواني',
+                  'برجر بيف',
+                  'برجر تشكن',
+                  'ساندوتشات شاورما',
+                  'وجبات شاورما',
+                  'شاورما بالوزن',
+                  'بيتزا',
+                ],
                 label: 'الصنف',
                 onChanged: (val) {
                   catogry = val;
@@ -134,7 +146,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                           price: price,
                           code: code,
                           description: description,
-                          catogry :catogry,
+                          catogry: catogry,
                           image: fileimage!,
                           isFeature: isFeature,
                           isOrgnic: isOrganic,
@@ -146,7 +158,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                       });
                     }
                   } else {
-                    BuildSnakBar(context, 'حدد الصوره',type:SnackbarType.warning );
+                    BuildSnakBar(context, 'حدد الصوره',
+                        type: SnackbarType.warning);
                   }
                 },
               ),
