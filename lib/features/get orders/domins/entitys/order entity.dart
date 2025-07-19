@@ -10,19 +10,18 @@ class OrderEntity {
   final AddressOrderEntity addressOrderEntity;
   final List<OrderproductEntity> orderProductEntity;
   final String payMethod;
-  final OrderStateEnum status;
+  final String status;
   final String methodOfReceipt;
 
-  OrderEntity(
-      {required this.totalPrice,
-        required this.orderNumber,
-        required this.methodOfReceipt,
-      required this.uID,
-      required this.oID,
-      required this.addressOrderEntity,
-      required this.orderProductEntity,
-      required this.status,
-      required this.payMethod,});
-
-
+  OrderEntity({
+    required this.totalPrice,
+    required this.orderNumber,
+    required this.methodOfReceipt,
+    required this.uID,
+    required this.oID,
+    required this.addressOrderEntity,
+    required this.orderProductEntity,
+    required this.status,
+    required this.payMethod,
+  });
 }

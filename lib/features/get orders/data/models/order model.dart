@@ -61,7 +61,7 @@ class OrderModel {
       methodOfReceipt: methodOfReceipt,
       orderNumber: orderNumber,
       totalPrice: totalPrice,
-      status:  OrderStateEnum.values.firstWhere((element) => element.toString().split('.').last == status),
+      status:  status,
       uID: uID,
       payMethod: payMethod, 
       addressOrderEntity:  addressOrderModel.toEntity(),

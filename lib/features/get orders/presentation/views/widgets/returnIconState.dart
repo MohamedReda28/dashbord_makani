@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 IconData getStatusIcon(String status) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "قيد الانتظار":
       return Icons.access_time;
-    case 'inprogress':
+    case 'يتم التحضير':
       return Icons.build_circle;
-    case 'shipped':
+    case 'جاري التوصيل':
       return Icons.local_shipping;
-    case 'delivered':
+    case 'تم التوصل':
       return Icons.check_circle_outline;
-    case 'canceled':
+    case 'فشل':
       return Icons.cancel_outlined;
     default:
       return Icons.help_outline;

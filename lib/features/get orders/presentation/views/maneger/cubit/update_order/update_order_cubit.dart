@@ -11,7 +11,7 @@ class UpdateOrderCubit extends Cubit<UpdateOrderState> {
   UpdateOrderCubit(this.orderRepo) : super(UpdateOrderInitial());
   final OrderRepo orderRepo;
 
-   Future<void> updateOrder({required OrderStateEnum
+   Future<void> updateOrder({required String
    status,required String oID} )async{
       emit(UpdateOrderLoading());
      var result = await orderRepo.updatOrders(

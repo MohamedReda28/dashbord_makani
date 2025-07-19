@@ -37,14 +37,14 @@ class OrderRepoImplment implements OrderRepo{
 }
 
   @override
-  Future<Either<Failur, void>> updatOrders(OrderStateEnum
+  Future<Either<Failur, void>> updatOrders(String
   status, String oID) async{
     try{
        await dataBaseServeces.updateData(
         path: BackEndImpoint.updateOeders,
         //ورح شوف عمليه update بتحتاج انك تبعت المودل كلو ماعدا الا محتادها تتعدل او ان انت محتاج نبعت الحاجه الا هتتعدل بس
         data:{
-          'status': status.name,
+          'status': status,
         } ,
         documentId: oID);
 

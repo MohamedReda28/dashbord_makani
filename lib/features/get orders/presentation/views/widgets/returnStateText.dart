@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 String getStatusText(String status) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "قيد الانتظار":
       return 'قيد الانتظار';
-    case 'inprogress':
+    case 'يتم التحضير':
       return 'يتم التحضير';
-    case 'shipped':
+    case 'جاري التوصيل':
       return 'جاري التوصيل';
-    case 'delivered':
+    case 'تم التوصل':
       return 'تم التوصل';
-    case 'canceled':
+    case 'فشل':
       return 'فشل';
     default:
       return 'غير معروف';

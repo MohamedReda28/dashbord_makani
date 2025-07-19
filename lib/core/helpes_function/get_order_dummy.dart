@@ -10,7 +10,7 @@ OrderEntity getdummydata() {
     uID: 'ORD12345',
     methodOfReceipt:'دليفري' ,
     payMethod: 'Paypal',
-    status: OrderStateEnum.pending,
+    status: 'يتم التحضير',
     addressOrderEntity: AddressOrderEntity(
       name: 'John Doe',
       address: '123 Main Street',

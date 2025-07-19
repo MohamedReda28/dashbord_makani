@@ -26,34 +26,34 @@ class OrderItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             // الحالة هنا
             Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.topLeft,
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
                   color:
-                      getStatusColor(orderEntity.status.name).withOpacity(0.1),
+                      getStatusColor(orderEntity.status).withOpacity(0.1),
                   border: Border.all(
-                      color: getStatusColor(orderEntity.status.name)),
+                      color: getStatusColor(orderEntity.status)),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
-                      getStatusIcon(orderEntity.status.name),
-                      color: getStatusColor(orderEntity.status.name),
+                      getStatusIcon(orderEntity.status),
+                      color: getStatusColor(orderEntity.status),
                       size: 18,
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      getStatusText(orderEntity.status.name),
+                      getStatusText(orderEntity.status),
                       style: TextStyle(
-                        color: getStatusColor(orderEntity.status.name),
+                        color: getStatusColor(orderEntity.status),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -63,32 +63,32 @@ class OrderItem extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'رقم الطلب: ${orderEntity.orderNumber}',
+              'رقم الطلب : ${orderEntity.orderNumber}',
               style: style,
             ),
             const SizedBox(height: 5),
             Text(
-              'اجمالي السعر:${orderEntity.totalPrice.toStringAsFixed(1)}',
+              'اجمالي السعر : ${orderEntity.totalPrice.toStringAsFixed(1)}',
               style: style,
             ),
-            Text('طريقه الدفع: ${orderEntity.payMethod}', style: style),
+            Text('طريقه الدفع : ${orderEntity.payMethod}', style: style),
             const Divider(),
             const Text(
               'عنوان التوصيل',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
             ),
             Text(
-              'الاسم: ${orderEntity.addressOrderEntity.name}',
+              'الاسم : ${orderEntity.addressOrderEntity.name}',
               style: style,
             ),
-            Text('طريقه الاستلام: ${orderEntity.methodOfReceipt}',
+            Text('طريقه الاستلام : ${orderEntity.methodOfReceipt}',
                 style: style),
 
             Text(
-                'العنوان: ${orderEntity.addressOrderEntity.city}, ${orderEntity.addressOrderEntity.address}',
+                'العنوان : ${orderEntity.addressOrderEntity.city}, ${orderEntity.addressOrderEntity.address}',
                 style: style),
             Text(
-              'رقم الموبايل: ${orderEntity.addressOrderEntity.phone}',
+              'رقم الموبايل : ${orderEntity.addressOrderEntity.phone}',
               style: style,
             ),
             const Divider(),
@@ -124,7 +124,7 @@ class OrderItem extends StatelessWidget {
       title: Text(product.name),
       subtitle: Row(
         children: [
-          Text('الكميه: ${product.quantity}'),
+          Text('الكميه : ${product.quantity}'),
           const Spacer(),
           Text(
             'جنيه ${product.price}',

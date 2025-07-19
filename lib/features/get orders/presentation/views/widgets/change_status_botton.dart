@@ -17,7 +17,7 @@ class ChangeStatusBotton extends StatelessWidget {
             onPressed: () {
               context.read<UpdateOrderCubit>().updateOrder(
 
-                  status: OrderStateEnum.inProgress,
+                  status:'يتم التحضير',
                   oID: orderEntity.oID
               );
             },
@@ -27,7 +27,7 @@ class ChangeStatusBotton extends StatelessWidget {
             onPressed: () {
               context.read<UpdateOrderCubit>().updateOrder(
 
-                  status: OrderStateEnum.shipped,
+                  status: 'جاري التوصيل',
                   oID: orderEntity.oID
               );
             },
@@ -37,7 +37,7 @@ class ChangeStatusBotton extends StatelessWidget {
             onPressed: () {
               context.read<UpdateOrderCubit>().updateOrder(
 
-                  status: OrderStateEnum.delivered,
+                  status: 'تم التوصل',
                   oID: orderEntity.oID
               );
             },
@@ -47,7 +47,7 @@ class ChangeStatusBotton extends StatelessWidget {
             onPressed: () {
               context.read<UpdateOrderCubit>().updateOrder(
 
-                  status: OrderStateEnum.canceled,
+                  status: 'فشل',
                   oID: orderEntity.oID
               );
             },

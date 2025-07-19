@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 Color getStatusColor(String status) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "قيد الانتظار":
       return Colors.orange;
-    case 'inprogress':
+    case 'يتم التحضير':
       return Colors.blue;
-    case 'shipped':
+    case 'جاري التوصيل':
       return Colors.teal;
-    case 'delivered':
+    case 'تم التوصل':
       return Colors.green;
-    case 'canceled':
+    case 'فشل':
       return Colors.red;
     default:
       return Colors.grey;

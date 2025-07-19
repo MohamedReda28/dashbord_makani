@@ -8,6 +8,6 @@ import '../../erroes/Failur.dart';
 abstract class OrderRepo{
 
   Stream<Either<Failur,List<OrderEntity>>> getOrders();
-  Future<Either<Failur,void>> updatOrders(OrderStateEnum state, String oID);
+  Future<Either<Failur,void>> updatOrders(String state, String oID);
 
 }
